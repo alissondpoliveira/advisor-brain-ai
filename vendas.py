@@ -30,10 +30,10 @@ with st.sidebar:
         st.error("Configure o secrets.toml!")
         api_key = None
     st.info("Modelo: gemini-flash-latest")
-    st.caption("Suporta: Texto, Prints e Áudios (Gravados ou Upload).")
+    st.caption("Biblioteca Carregada: Graham, Bogle, Kahneman, Cialdini, Rackham e +.")
 
 # --- CONTEÚDO PRINCIPAL ---
-st.title("🧠 Advisor Brain AI 3.1 (Multimodal Completo)")
+st.title("🧠 Advisor Brain AI 3.2 (Biblioteca Completa)")
 st.markdown("### Cole o texto, suba um print ou envie um áudio.")
 
 # --- ABAS DE ENTRADA ---
@@ -41,7 +41,7 @@ tab_texto, tab_imagem, tab_audio = st.tabs(["📝 Texto / Digitar", "📸 Print 
 
 user_input = None 
 input_type = None 
-audio_mime_type = "audio/wav" # Padrão
+audio_mime_type = "audio/wav" 
 
 with tab_texto:
     text_area_val = st.text_area(
@@ -65,21 +65,19 @@ with tab_audio:
     st.markdown("##### Opção A: Gravar agora")
     audio_recorder = st.audio_input("Clique para gravar")
     
-    st.markdown("##### Opção B: Subir arquivo (WhatsApp/Exportação)")
+    st.markdown("##### Opção B: Subir arquivo")
     audio_uploader = st.file_uploader("Suba arquivos de áudio", type=["wav", "mp3", "m4a", "ogg", "aac"])
 
-    # Lógica de prioridade: Se gravou, usa o gravado. Se subiu, usa o arquivo.
     if audio_recorder:
         st.audio(audio_recorder)
         user_input = audio_recorder
         input_type = "audio"
-        audio_mime_type = "audio/wav" # Gravador do browser geralmente é wav
-    
+        audio_mime_type = "audio/wav" 
     elif audio_uploader:
         st.audio(audio_uploader)
         user_input = audio_uploader
         input_type = "audio"
-        audio_mime_type = audio_uploader.type # Pega o tipo real (ex: audio/mp3)
+        audio_mime_type = audio_uploader.type
 
 st.markdown("---")
 btn_gerar = st.button("✨ Analisar e Gerar Scripts", type="primary", use_container_width=True)
@@ -89,25 +87,61 @@ def get_ai_response(content, type_content, mime_type="audio/wav"):
     genai.configure(api_key=api_key)
     model = genai.GenerativeModel('gemini-flash-latest')
 
-    # PROMPT DE SISTEMA
+    # PROMPT DE SISTEMA COM BIBLIOTECA DEFINIDA
     system_prompt_text = """
-    Você é o "Advisor Brain". Analise a entrada (Texto, Imagem ou Áudio) que contém uma objeção de vendas.
-    Base intelectual: Graham, Kahneman, FBI e Cialdini.
+    Você é o "Advisor Brain", o maior especialista em Wealth Management do mundo.
+    
+    ⚠️ SUA INTELIGÊNCIA É RESTRITA E GUIADA EXCLUSIVAMENTE POR ESTA BIBLIOTECA:
+    
+    1. FUNDAMENTOS & TÉCNICA (Para lógica e dados):
+    - Benjamin Graham (The Intelligent Investor): Foco em valor intrínseco e margem de segurança.
+    - John C. Bogle (Common Sense on Mutual Funds / The Little Book): Custos baixos, simplicidade, indexação.
+    - Burton G. Malkiel (A Random Walk Down Wall Street): Eficiência de mercado.
+    - Charles D. Ellis (Winning the Loser’s Game): Evitar erros é mais importante que acertar grandes tacadas.
+    - Aswath Damodaran (Investment Valuation): Preço vs Valor.
+    - William J. Bernstein (The Four Pillars of Investing): História e teoria do portfólio.
 
-    PASSO 1: TRANSCRIÇÃO E CONTEXTO
-    - Se for imagem/áudio, faça a transcrição completa primeiro.
-    - Identifique o sentimento (ex: raiva, medo) e o viés cognitivo.
+    2. PSICOLOGIA & COMPORTAMENTO (Para acalmar e educar):
+    - Daniel Kahneman (Thinking, Fast and Slow): Sistema 1 vs Sistema 2.
+    - Richard Thaler (Nudge): Arquitetura de escolha.
+    - Hersh Shefrin (Behavioral Portfolio Theory): Medo e esperança.
+    - Morgan Housel (The Psychology of Money): Comportamento > Inteligência.
+    - Michael Lewis (The Undoing Project): Vieses de decisão.
+    - Carol S. Dweck (Mindset): Foco no longo prazo (crescimento).
+
+    3. VENDAS, INFLUÊNCIA & MARKETING (Para converter e persuadir):
+    - Neil Rackham (SPIN Selling): Perguntas de Situação, Problema, Implicação e Necessidade.
+    - Daniel H. Pink (To Sell Is Human): Vendas como serviço e clareza.
+    - Robert B. Cialdini (Influence): Reciprocidade, Autoridade, Prova Social, Escassez.
+    - Dale Carnegie (How to Win Friends): Interesse genuíno, usar o nome da pessoa.
+    - Seth Godin (This Is Marketing): Empatia e posicionamento.
+    - David Meerman Scott (The New Rules of Marketing & PR): Agilidade e conteúdo útil.
+    - Peter F. Drucker (The Effective Executive): Eficácia na comunicação.
+
+    ---
+    PASSO 1: DIAGNÓSTICO PROFUNDO
+    - Identifique o sentimento do cliente.
+    - Identifique qual conceito desses autores foi violado ou pode ajudar (Ex: "O cliente está ignorando Bogle sobre custos" ou "O cliente está preso no viés de recência de Kahneman").
 
     PASSO 2: AÇÃO TÁTICA (Scripts Prontos)
-    Crie 3 versões da resposta:
-    📱 WHATSAPP (Curto, Pessoal, Técnica de Espelhamento).
-    📧 E-MAIL (Estruturado, SPIN Selling).
-    📞 SCRIPT DE LIGAÇÃO (Empático, Fechamento).
+    Crie 3 versões da resposta para canais diferentes.
+    
+    📱 WHATSAPP (Curto e Pessoal)
+    - Use Dale Carnegie (tom amigável) + Cialdini (um gatilho mental).
+    - Termine com uma pergunta.
+
+    📧 E-MAIL (Estruturado)
+    - Use SPIN Selling (Rackham): Mostre a Implicação do problema atual.
+    - Use Graham/Bogle para embasamento técnico.
+
+    📞 SCRIPT DE LIGAÇÃO (Argumentação)
+    - Use Chris Voss/FBI (Empatia Tática) para abrir.
+    - Use Morgan Housel (História/Narrativa) para conectar.
 
     Fale português do Brasil profissional. Use formatação Markdown.
     """
 
-    with st.spinner("Processando entrada multimídia..."):
+    with st.spinner("Consultando a biblioteca dos mestres..."):
         input_data = [system_prompt_text]
 
         if type_content == "text":
@@ -118,11 +152,10 @@ def get_ai_response(content, type_content, mime_type="audio/wav"):
             input_data.append(content)
         
         elif type_content == "audio":
-            # Leitura dos bytes do arquivo
             audio_bytes = content.read()
-            input_data.append("Analise este áudio, transcreva o que foi dito e responda à objeção:")
+            input_data.append("Transcreva e analise este áudio:")
             input_data.append({
-                "mime_type": mime_type, # Passa o tipo correto (mp3/wav/m4a)
+                "mime_type": mime_type,
                 "data": audio_bytes
             })
 
@@ -132,12 +165,11 @@ def get_ai_response(content, type_content, mime_type="audio/wav"):
 # --- EXIBIÇÃO ---
 if btn_gerar:
     if not user_input:
-        st.warning("⚠️ Por favor, forneça uma entrada (Texto, Imagem ou Áudio).")
+        st.warning("⚠️ Forneça uma entrada (Texto, Imagem ou Áudio).")
     elif not api_key:
         st.error("🔑 Configure a API Key no secrets.toml.")
     else:
         try:
-            # Passamos também o mime_type do áudio
             resultado = get_ai_response(user_input, input_type, audio_mime_type)
             st.markdown(resultado)
         except Exception as e:
