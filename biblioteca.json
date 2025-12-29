@@ -1,0 +1,77 @@
+{
+    "investimentos": {
+        "titulo": "1. FUNDAMENTOS DE MERCADO & TÉCNICA (Hard Skills)",
+        "livros": [
+            "Benjamin Graham — The Intelligent Investor",
+            "John C. Bogle — Common Sense on Mutual Funds",
+            "John C. Bogle — The Little Book of Common Sense Investing",
+            "Burton G. Malkiel — A Random Walk Down Wall Street",
+            "Charles D. Ellis — Winning the Loser’s Game",
+            "Aswath Damodaran — Investment Valuation",
+            "William J. Bernstein — The Four Pillars of Investing",
+            "Robert G. Allen — Multiple Streams of Income",
+            "Stephen D. Levitt & Steven D. Dubner — Freakonomics"
+        ]
+    },
+    "comportamento": {
+        "titulo": "2. PSICOLOGIA ECONÔMICA & MINDSET (Entendendo a Mente)",
+        "livros": [
+            "Morgan Housel — The Psychology of Money",
+            "Daniel Kahneman — Thinking, Fast and Slow",
+            "Richard H. Thaler — Nudge",
+            "Hersh Shefrin — Behavioral Portfolio Theory",
+            "Michael Lewis — The Undoing Project",
+            "Carol S. Dweck — Mindset",
+            "Travis Bradberry & Jean Greaves — Emotional Intelligence 2.0",
+            "Daniel Goleman — Emotional Intelligence",
+            "Malcolm Gladwell — Blink",
+            "Malcolm Gladwell — Outliers",
+            "Spencer Johnson — Who Moved My Cheese?"
+        ]
+    },
+    "vendas": {
+        "titulo": "3. VENDAS, NEGOCIAÇÃO & INFLUÊNCIA (A Arte do Fechamento)",
+        "livros": [
+            "Daniel H. Pink — To Sell Is Human",
+            "Neil Rackham — SPIN Selling",
+            "Robert B. Cialdini — Influence",
+            "Dale Carnegie — How to Win Friends and Influence People",
+            "Brian Tracy — The Psychology of Selling",
+            "Zig Ziglar — Secrets of Closing the Sale",
+            "Roger Fisher & William Ury — Getting to Yes",
+            "Adam Grant — Give and Take"
+        ]
+    },
+    "marketing_cliente": {
+        "titulo": "4. MARKETING, SERVIÇO & EXPERIÊNCIA DO CLIENTE (Growth)",
+        "livros": [
+            "Seth Godin — This Is Marketing",
+            "David Meerman Scott — The New Rules of Marketing & PR",
+            "Gary Vaynerchuk — Crushing It!",
+            "Gary Vaynerchuk — Jab, Jab, Jab, Right Hook",
+            "Ken Blanchard & Sheldon Bowles — Raving Fans",
+            "Chip Heath & Dan Heath — Made to Stick",
+            "Malcolm Gladwell — The Tipping Point"
+        ]
+    },
+    "performance": {
+        "titulo": "5. LIDERANÇA, PRODUTIVIDADE & GESTÃO (Alta Performance)",
+        "livros": [
+            "Peter F. Drucker — The Effective Executive",
+            "Stephen R. Covey — The 7 Habits of Highly Effective People",
+            "Jim Collins — Good to Great",
+            "Jim Collins — Great by Choice",
+            "Patrick Lencioni — The Five Dysfunctions of a Team",
+            "Patrick Lencioni — The Ideal Team Player",
+            "Marcus Buckingham — First, Break All the Rules",
+            "Cal Newport — Deep Work",
+            "Cal Newport — So Good They Can’t Ignore You",
+            "Chip Heath & Dan Heath — Switch",
+            "Tim Ferriss — The 4-Hour Workweek",
+            "Tim Ferriss — Tools of Titans",
+            "Tony Robbins — Awaken the Giant Within",
+            "Tony Robbins — Unlimited Power",
+            "Robert Greene — Mastery"
+        ]
+    }
+}
